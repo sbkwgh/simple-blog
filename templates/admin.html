@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,500,400italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel='stylesheet' type='text/css' href='../static/css/functionalClasses.css'>
+	<link rel='stylesheet' type='text/css' href='../static/css/cssElements.css'>
+	<link rel='stylesheet' type='text/css' href='../static/css/dashboard.css'>
+	<link rel='stylesheet' type='text/css' href='../static/css/style.css'>
+	<meta charset='UTF-8'>
+</head>
+<body>
+	<div id='left-menu-bar'  class='noselect'>
+		<div id='logo-title'>
+			<i class='fa fa-user fa-fw'></i>&nbsp;
+			<span class='pointer' id='account'>Hi, {{author}} <i id='logout-menu' class='fa fa-angle-down'></i></span>
+		</div>
+		<div id='list-groups'>
+		</div>
+	</div>
+	<div id='message-box' class="hidden">
+		Select a post from the list, or create a 
+			<div class='button btn-green' id='new-post-button-message-box'>
+				<i class='fa fa-pencil'></i>
+				New post
+			</div>
+	</div>
+	<div id='main'></div>
+
+	<script type='text/template' data-template='index'>
+		<h1 class='row-header'>quick actions</h1>
+		<div class='row row-1 widgets'>
+			<div class='box'>
+				<div class='widget-header'>account</div>
+			</div>
+			<div class='box'></div>
+			<div class='box'></div>
+		</div>
+		<h1 class='row-header'>at a glance</h1>
+		<div class='row row-1 widgets'>
+			<div class='box widget-icon widget-icon-pink'>
+				<i class='fa fa-clock-o'></i>
+				<div class='widget-icon-text'>
+					<div class='widget-icon-detail'>21:14</div>
+					time right now
+				</div>
+			</div>
+			<div class='box widget-icon widget-icon-blue'>
+				<i class='fa fa-pencil-square-o'></i>
+				<div class='widget-icon-text'>
+					<div class='widget-icon-detail'>5</div>
+					posts written this month
+				</div>
+			</div>
+			<div class='box widget-icon widget-icon-orange'>
+				<i class='fa fa-users'></i>
+				<div class='widget-icon-text'>
+					<div class='widget-icon-detail'>500</div>
+					unique visitors today
+				</div>
+			</div>
+			<div class='box widget-icon widget-icon-green'>
+				<i class='fa fa-comments'></i>
+				<div class='widget-icon-text'>
+					<div class='widget-icon-detail'>8</div>
+					comments on latest post
+				</div>
+			</div>
+		</div>
+	</script>
+	<script type='text/template' data-template='templateNotFound'>
+		<h1 style='text-align: center'>404 page not found :(</h1>
+		<h3 style='text-align: center'>Click <a href='#index'>here</a> to go home</h3>
+	</script>
+	</script>
+	<script type='text/template' data-template='posts'>
+		<div id='title-bar'>
+			<div class='action-buttons' id='left-actions'>
+				<div class='button btn-green' id='new-post-button'>
+					<i class='fa fa-pencil'></i>
+					New post
+				</div>
+			</div>
+			<input id='post-title' spellcheck="false">
+			<div class='action-buttons' id='right-actions'>
+				<div class='button' id='publish-post-button'>
+					<i class='fa fa-globe'></i>
+					Publish post
+				</div>
+				<div class='button hidden' id='unpublish-post-button'>
+					<i class='fa fa-minus-circle'></i>
+					Unpublish post
+				</div>
+				<div class='button btn-red' id='delete-post-button'>
+					<i class='fa fa-trash-o'></i>
+					Delete post
+				</div>
+			</div>
+		</div>
+		<div id='markdown-editor'>
+			<div id='me-bar'>
+				<span>Markdown</span>
+				<i id='me-bold' class='fa fa-bold'></i>
+				<i id='me-italic' class='fa fa-italic'></i>
+				<i id='me-strikethrough' class='fa fa-strikethrough'></i>&nbsp;
+				<i id='me-link' class='fa fa-link'></i>&nbsp;
+				<i id='me-list-ul' class='fa fa-list-ul'></i>
+			</div>
+			<textarea>
+			</textarea>
+			<div id='tag-bar'>
+				<input placeholder='Enter tags here'>
+			</div>
+		</div>
+		<div id='display'>
+			<div id='display-bar'>
+				<span>Preview</span>
+				<span id='autosave-time'></span>
+				<span id='display-bar-wordcount'></span>
+			</div>
+			<div id='display-display'></div>
+		</div>
+	</script>
+	<script type='text/javascript' src='../static/js/functions.js'></script>
+	<script type='text/javascript' src='../static/js/time.js'></script>
+	<script type='text/javascript' src='../static/js/request.js'></script>
+	<script type='text/javascript' src='../static/js/router.js'></script>
+	<script type='text/javascript' src='../static/js/tooltip.js'></script>
+	<script type='text/javascript' src='../static/js/tagBar.js'></script>
+	<script type='text/javascript' src='../static/js/menuBar.js'></script>
+	<script type='text/javascript' src='../static/js/markdown.js'></script>
+	<script type='text/javascript' src='../static/js/markdownEditor.js'></script>
+	<script type='text/javascript' src='../static/js/script.js'></script>
+</body>
+</html>

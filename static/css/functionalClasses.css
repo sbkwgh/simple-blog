@@ -1,0 +1,96 @@
+@keyframes fadeout {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes glow {
+	from {
+		text-shadow: none;
+	}
+	50% {
+		text-shadow: 0px 0px 5px;
+	}
+	to {
+		text-shadow: none;
+	}
+}
+
+
+.glow {
+	animation: glow 1s;
+}
+.blur {
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
+	pointer-events: none;
+	cursor: default;
+	opacity: 0.7;
+}
+.overlay:after {
+	content: '';
+	z-index: 3;
+	display: block;
+	width: calc(100% - 10rem);
+	height: 100%;
+	left: 10rem;
+	top: 0;
+	position: fixed;
+	background-color: gray;
+	opacity: 0.75;
+}
+
+
+.hidden {
+	display: none !important;
+}
+
+
+.fadeout {
+	animation-name: fadeout;
+	animation-duration: 0.5s;
+}
+.fadein {
+	animation-name: fadein;
+	animation-duration: 0.5s;
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.draft::after {
+	content: 'draft';
+	font-variant: small-caps;
+	background-color: #DBDBDB;
+	color: #5D5D5D;
+	border-radius: 0.25rem;
+	height: 1rem;
+	font-size: 0.7rem;
+	padding: 0.1rem;
+	float: right;
+	font-weight: normal;
+}

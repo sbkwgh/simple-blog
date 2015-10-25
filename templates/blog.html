@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blog</title>
+	<link rel="stylesheet" type="text/css" href="../../static/css/blog.css">
+</head>
+<body>
+	<div id='color-bar'></div>
+	<header>
+		<a href='/blog/posts'>Blog title</a>
+		<div>A description of the blog</div>
+	</header>
+	{% if !posts.length %}
+		<h1 id='no-posts'>No posts to show here</h1>
+	{% endif %}
+	{% for post in posts %}
+		<div class='post'>
+			<div class='post-header'>
+				<div class='post-date-author-bar'>
+					<div class='post-date-created'>{{post.dateString}}</div>
+				</div>
+				<a href='/blog/posts/{{post._id.toString()}}' class='post-title'>{{post.title}}</a>
+			</div>
+			<div class='post-body'>{{post.body}}</div>
+			<div class='post-tags'>
+				{% for tag in post.tags %}
+					<a href='/blog/tag/{{tag}}'>{{tag}}</a>
+				{% endfor %}
+			</div>
+		</div>
+	{% endfor %}
+</body>
+</html>

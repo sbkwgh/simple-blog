@@ -1,0 +1,82 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	top: 0;
+	font-family: 'Roboto', sans-serif;
+	position: absolute;
+}
+
+#account-box {
+	width: 25rem;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-75%) translateX(-50%);
+}
+
+#load, #message {
+	position: fixed;
+	top: 0;
+	bottom: 5rem;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-size: 2rem;
+	height: 2rem;
+	width: 2rem;
+	z-index: 3;
+	text-align: justify;
+	cursor: default;
+}
+	#message {
+		width: 12rem;
+		font-size: 1rem;
+	}
+
+input {
+	width: 100%;
+	font-size: 1.5rem;
+	padding: 0.25rem;
+	box-sizing: border-box;
+	border: 2px solid gray;
+	border-width: 1px 2px;
+}
+	input::-moz-placeholder {
+		font-weight: 100;
+		font-family: 'Roboto'
+	}
+	input::-webkit-placeholder {
+		font-weight: 100;
+		font-family: 'Roboto'
+	}
+	input::-ms-placeholder {
+		font-weight: 100;
+		font-family: 'Roboto'
+	}
+
+	form input:first-of-type {
+		border-radius: 0.25rem 0.25rem 0 0;
+		border-bottom-width: 1px;
+		border-top-width: 2px;
+	}
+	form input:last-of-type {
+		border-top-width: 1px;
+		border-bottom-width: 2px;
+		border-radius: 0 0 0.25rem 0.25rem;
+	}
+
+#login-button, #create-account-button {
+	margin: 0.5rem 0;
+	width: 100%;
+	box-sizing: border-box;
+	height: auto;
+	font-weight: 700;
+	text-align: center;
+}
+
+#create-account-link, #login-link {
+	font-weight: bold;
+	cursor: pointer;
+}

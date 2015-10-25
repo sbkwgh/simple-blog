@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,500,400italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel='stylesheet' type='text/css' href='../../static/css/functionalClasses.css'>
+	<link rel='stylesheet' type='text/css' href='../../static/css/cssElements.css'>
+	<link rel='stylesheet' type='text/css' href='../../static/css/login.css'>
+	<meta charset='UTF-8'>
+	<title>Login to your blog</title>
+</head>
+<body>
+	<i id='load' class='hidden fa fa-refresh fa-spin'></i>
+	<div id='message' class='hidden'></div>
+	<div id='account-box'>
+		<form id='login'>
+			<h1>Login to your blog</h1>
+			<input name='username' placeholder='Username'>
+			<input type='password' name='password' placeholder='Password'>
+			<div id='login-button' class='button btn-green'><i class='fa fa-sign-in'></i> Login</div>
+			Haven't got an account yet? <span id='create-account-link'>Create one</span>
+		</form>
+		<form id='create-account' class='hidden'>
+			<h1>Create an account</h1>
+			<input name='username' placeholder='Username'>
+			<input name='author' placeholder='Name'>
+			<input type='password' name='password' placeholder='Password'>
+			<div id='create-account-button' class='button btn-green'>Create account</div>
+			Or, if you've already made an account, <span id='login-link'>login</span>
+		</form>
+	</div>
+	<script type="text/javascript" src='../../static/js/request.js'></script>
+	<script type="text/javascript" src='../../static/js/tooltip.js'></script>
+	<script type="text/javascript" src='../../static/js/functions.js'></script>
+	<script type="text/javascript" src='../../static/js/login.js'></script>
+</body>
+</html>

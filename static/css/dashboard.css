@@ -1,0 +1,136 @@
+.row-header{
+	margin: 0.5rem 2rem;
+	height: 2rem;
+	font-size: 1.5rem;
+	font-variant: small-caps;
+	font-weight: normal;
+}
+.row {
+	display: flex;
+}
+.row-1 {
+	height: 10rem;
+}
+.row-2 {
+	height: 14rem;
+}
+.row-3 {
+	height: 18rem;
+}
+.row-m {
+	margin: 2rem 0;
+}
+.row-tm {
+	margin-top: 2rem;
+}
+
+.box {
+	margin: 0 1rem;
+	box-sizing: border-box;
+	height: 100%;
+	flex-basis: 0;
+	flex-grow: 1;
+	overflow-y: auto;
+word-wrap: break-word;
+}
+.box:first-child {
+	margin-left: 2rem;
+}
+.box:last-child {
+	margin-right: 2rem;
+}
+
+.box-1h {
+	flex-grow: 1.5;
+}
+.box-2 {
+	flex-grow: 2;
+}.box-2h {
+	flex-grow: 2.5;
+}
+.box-3 {
+	flex-grow: 3;
+}
+
+.widgets > div {
+	border-radius: 0.25rem;
+	padding: 1rem;
+	box-shadow: 0 0 0.125rem rgba(100,100,100,0.5);
+	background-color: white;
+	color: rgb(100, 100, 100);
+}
+	.widget-header {
+		width: calc(100% + 2rem);
+		background-color: #C2BFBF;
+		height: 2rem;
+		color: #fff;
+		margin: -1rem;
+		margin-bottom: 0.5rem;
+		padding: 0 0.5rem;
+		box-sizing: border-box;
+		line-height: 1.9rem;
+		font-variant: small-caps;
+	}
+	.widgets div i {
+		box-sizing: border-box;
+		line-height: 10rem;
+		height: 100%;
+		float: left;
+		width: 35%;
+		font-size: 3rem;
+		padding-left: 1rem;
+		padding-right: 0.5rem;
+		width: 40%;
+	}
+	.widget-icon {
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		padding: 0 !important;
+		text-align: center;
+		color: #fff !important;
+	}
+	.widget-icon-text {
+		float: right;
+		border-left: 1px solid #808080;
+		position: relative;
+		font-size: 1rem;
+		box-sizing: border-box;
+		padding: 0.5rem 1rem 0.5rem 0.5rem;
+		width: 60%;
+	}
+	.widget-icon-detail {
+		line-height: 2.5rem;
+		font-size: 3rem;
+		text-align: center;
+	}
+	.widget-icon-green .widget-icon-text {
+		border-left: 1px solid #58AE47;
+	}
+	.widget-icon-green {
+		background-color: rgb(115, 218, 101) !important;
+	}
+	.widget-icon-orange {
+		background-color: #F8A53B !important;
+	}
+	.widget-icon-orange .widget-icon-text {
+		border-left: 1px solid #CF704B;
+	}
+	.widget-icon-blue {
+		background-color: #72D1E1  !important;
+	}
+	.widget-icon-blue .widget-icon-text {
+		border-left: 1px solid #4E9FAD;
+	}
+	.widget-icon-yellow {
+		background-color: #ECF056  !important;
+	}
+	.widget-icon-yellow .widget-icon-text {
+		border-left: 1px solid #CEB33F;
+	}
+	.widget-icon-pink {
+		background-color: #FC7575  !important;
+	}
+	.widget-icon-pink .widget-icon-text {
+		border-left: 1px solid #DA355E;
+	} 
