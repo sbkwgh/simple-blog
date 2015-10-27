@@ -82,6 +82,16 @@
 	animation-duration: 1s;
 }
 
+a[target="_blank"]:after {
+	font-family: FontAwesome;
+	pointer-events: none;
+	cursor: default;
+	font-size: 0.75em;
+	text-decoration: none !important;
+	content: ' \f08e';
+}
+
+
 .list-group {
 	color: #FFF;
 	transition: 0.25s all ease-in;
