@@ -2,7 +2,7 @@ var blogMenuBar = new MenuBar(
 	document.querySelector('#list-groups'),
 	{
 		'pencil:Posts': [],
-		'cog:Settings': ['account', 'themes', 'users'],
+		'cog:Settings': [{title: 'general', link:'settings'}, {title: 'appearance', link: 'settings/appearance'}],
 		'comment:Comments': ['manage', 'delete']
 	}
 );
@@ -38,22 +38,54 @@ var blogPost = new Post({
 });
 
 
-var App = new Router(document.querySelector('#main'), blogMenuBar, {
-	posts: function() {
-		document.querySelector('#main').classList.add('overlay');
-		document.querySelector('#message-box').classList.remove('hidden');
+var App = new Router(document.querySelector('#main'), blogMenuBar);
 
-		Post.get(function(err, posts) {
-			if(err) return;
+App.addRoute('posts', function() {
+	document.querySelector('#main').classList.add('overlay');
+	document.querySelector('#message-box').classList.remove('hidden');
 
-			blogMenuBar.menuItems['pencil:Posts'] = posts;
-			blogMenuBar.menuItems = blogMenuBar.menuItems;
+	Post.get(function(err, posts) {
+		if(err) return;
+
+		blogMenuBar.menuItems['pencil:Posts'] = posts;
+		blogMenuBar.menuItems = blogMenuBar.menuItems;
+	});
+});
+App.addRoute('index', function() {
+	document.querySelector('#main').classList.remove('overlay');
+	document.querySelector('#message-box').classList.add('hidden');
+});
+App.addRoute('settings', function() {
+	setTimeout(function() {
+		Request.get('/api/config', function(result) { 
+			var g = result.general;
+			if(g) {
+				document.querySelector('#blog-title').value = g.blog.title;
+				document.querySelector('#blog-description').value = g.blog.description;
+			}
 		});
-	},
-	index: function() {
-		document.querySelector('#main').classList.remove('overlay');
-		document.querySelector('#message-box').classList.add('hidden');
-	}
+	}, 1000);
+});
+App.addRoute('settings/appearance', function() {
+	setTimeout(function() {
+		Request.get('/api/config', function(result) { 
+			var a = result.appearance;
+			if(a) {
+				document.querySelector('#blog-title-font').value = a.font.blogTitle;
+				document.querySelector('#post-title-font').value = a.font.postTitle;
+				document.querySelector('#post-body-font').value = a.font.postBody;
+				document.querySelector('#default-font').value = a.font.default;
+				document.querySelector('#default-link-colour').value = a.colour.link.default;
+				document.querySelector('#visited-link-colour').value = a.colour.link.visited;
+				document.querySelector('#hover-link-colour').value = a.colour.link.hover;
+				document.querySelector('#active-link-colour').value = a.colour.link.active;
+				document.querySelector('#top-bar-colour').value = a.colour.topBar;
+				document.querySelector('#blog-title-colour').value = a.colour.blogTitle;
+				document.querySelector('#post-title-colour').value = a.colour.postTitle;
+				document.querySelector('#post-body-colour').value = a.colour.postBody;
+			}
+		});
+	}, 1000);
 });
 
 blogMenuBar.el.addEventListener('click', function(ev) {
