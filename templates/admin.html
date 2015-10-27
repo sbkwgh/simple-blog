@@ -6,6 +6,7 @@
 	<link rel='stylesheet' type='text/css' href='../static/css/functionalClasses.css'>
 	<link rel='stylesheet' type='text/css' href='../static/css/cssElements.css'>
 	<link rel='stylesheet' type='text/css' href='../static/css/dashboard.css'>
+	<link rel='stylesheet' type='text/css' href='../static/css/settings.css'>
 	<link rel='stylesheet' type='text/css' href='../static/css/style.css'>
 	<meta charset='UTF-8'>
 </head>
@@ -121,6 +122,93 @@
 			<div id='display-display'></div>
 		</div>
 	</script>
+	<script type="text/template" data-template='settings'>
+		<div id='settings'>
+			<div id='settings-bar'>
+				<div class='button btn-green' id='save-general-settings'><i class='fa fa-cloud'></i>&nbsp;Save settings</div>
+				<span class='settings-save' id='general-save-time'></span>
+			</div>
+			<h1>General</h1>
+			<table>
+				<tr>
+					<td>Blog title:</td>
+					<td><input id='blog-title' placeholder='The title for your blog'></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td><textarea id='blog-description' placeholder='A brief description of what your blog is about'></textarea></td>
+				</tr>
+			</table>
+		</div>
+	</script>
+	<script type="text/template" data-template='settings/appearance'>
+		<div id='settings'>
+			<div id='settings-bar'>
+				<div class='button btn-green' id='save-appearance-settings'><i class='fa fa-cloud'></i>&nbsp;Save settings</div>
+				<span class='settings-save' id='appearance-save-time'></span>
+			</div>
+			<h1>Appearance</h1>
+				<h2>Fonts</h2>
+				<p>
+					Select any font from <a href='https://www.google.com/fonts/' target='_blank'>Google Fonts</a>. 
+					Once you have found a font you like, enter the name in the box. <br/>
+					Note: too many fonts can slow down the page-load
+				</p>
+				<table>
+					<tr>
+						<td>Font for blog title:</td>
+						<td><input id='blog-title-font' placeholder='e.g. Roboto'></td>
+					</tr>
+					<tr>
+						<td>Font for post titles:</td>
+						<td><input id='post-title-font' placeholder='e.g. Roboto'></td>
+					<tr>
+						<td>Font for post body:</td>
+						<td><input id='post-body-font' placeholder='e.g. Roboto'></td>
+					</tr>
+					<tr>
+						<td>Font for all the rest:</td>
+						<td><input id='default-font' placeholder='e.g. Roboto'></td>
+					</tr>
+				</table>
+				<h2>Colours</h2>
+				<table>
+					<tr>
+						<td>Link colour:</td>
+						<td><input id='default-link-colour' type='color'></td>
+					</tr>
+					<tr>
+						<td>&emsp;Link hover colour:</td>
+						<td><input id='hover-link-colour' type='color'></td>
+					</tr>
+					<tr>
+						<td>&emsp;Visited link colour:</td>
+						<td><input id='visited-link-colour' type='color'></td>
+					</tr>
+					<tr>
+						<td>&emsp;Active link colour:</td>
+						<td><input id='active-link-colour' type='color'></td>
+					</tr>
+					<tr>
+						<td>Top bar colour:</td>
+						<td><input id='top-bar-colour' type='color'></td>
+					</tr>
+					<tr>
+						<td>Blog title colour:</td>
+						<td><input id='blog-title-colour' type='color'></td>
+					</tr>
+					<tr>
+						<td>Post title colour:</td>
+						<td><input id='post-title-colour' type='color'></td>
+					</tr>
+					<tr>
+						<td>Post body colour:</td>
+						<td><input id='post-body-colour' type='color'></td>
+					</tr>
+			</table>
+		</div>
+	</script>
+
 	<script type='text/javascript' src='../static/js/functions.js'></script>
 	<script type='text/javascript' src='../static/js/time.js'></script>
 	<script type='text/javascript' src='../static/js/request.js'></script>
@@ -130,6 +218,7 @@
 	<script type='text/javascript' src='../static/js/menuBar.js'></script>
 	<script type='text/javascript' src='../static/js/markdown.js'></script>
 	<script type='text/javascript' src='../static/js/markdownEditor.js'></script>
+	<script type='text/javascript' src='../static/js/settings.js'></script>
 	<script type='text/javascript' src='../static/js/script.js'></script>
 </body>
 </html>
