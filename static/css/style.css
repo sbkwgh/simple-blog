@@ -74,7 +74,7 @@ html, body {
 
 #main {
 	height: 100%;
-	overflow-y: auto;
+	overflow: auto;
 	width: calc(100% - 10rem);
 	background-color: #FCFCFC;
 	float: right;
