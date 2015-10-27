@@ -51,6 +51,9 @@ App.addRoute('posts', function() {
 		blogMenuBar.menuItems = blogMenuBar.menuItems;
 	});
 });
+App.addRoute('posts/:_id', function(params) {
+	console.log(params._id)
+});
 App.addRoute('index', function() {
 	document.querySelector('#main').classList.remove('overlay');
 	document.querySelector('#message-box').classList.add('hidden');

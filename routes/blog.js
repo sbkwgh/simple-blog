@@ -11,7 +11,7 @@ function renderBlogCb(err, posts, req, res) {
 			if(err) {
 				res.render('blog.html', {posts: []})
 			} else {
-				res.render('blog.html', {config:config, posts: posts});
+				res.render('blog.html', {config:config, posts: posts, tag: req.params.tag});
 			}
 		})
 	}
