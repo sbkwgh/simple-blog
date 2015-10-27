@@ -13,6 +13,10 @@ header a:hover, a:hover {
 header a:active, a:active {
 	color: #8EB7CB;
 }
+a: {
+	color: #5F7F9C;
+	text-decoration: underline;
+}
 a:visited {
 	color: #477C95;
 }
@@ -40,10 +44,10 @@ header {
 	position: fixed;
 	top: 3rem;
 	left: 2rem;
+	width: 17.5rem;
 }
-	header a, header a:visited {
-		transition: all 0.2s;
-		color: #757D84;
+	header a {
+		color:  #6C7172;
 		text-decoration: none;
 	}
 	header div {

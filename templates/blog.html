@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Blog</title>
-	<link rel="stylesheet" type="text/css" href="../../static/css/blog.css">
+	<title>{{config.general.blog.title}}</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/blog.css">
+	<link rel="stylesheet" type="text/css" href="/api/config/css.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+	<script src="/api/config/js.js"></script>
 </head>
 <body>
 	<div id='color-bar'></div>
 	<header>
-		<a href='/blog/posts'>Blog title</a>
-		<div>A description of the blog</div>
+		<a href='/blog/posts'>{{config.general.blog.title}}</a>
+		<div>{{config.general.blog.description}}</div>
 	</header>
 	{% if !posts.length %}
 		<h1 id='no-posts'>No posts to show here</h1>
