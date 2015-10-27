@@ -91,6 +91,14 @@ a[target="_blank"]:after {
 	content: ' \f08e';
 }
 
+blockquote {
+	background-color: rgb(233, 233, 233);
+	border-left: 0.5rem solid rgb(191, 191, 191);
+}
+	blockquote p {
+		padding: 0.5rem;
+	}
+
 
 .list-group {
 	color: #FFF;

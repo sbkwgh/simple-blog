@@ -37,6 +37,14 @@ a:visited {
 	top: 40%;
 }
 
+blockquote {
+	background-color: rgb(233, 233, 233);
+	border-left: 0.5rem solid rgb(191, 191, 191);
+}
+	blockquote p {
+		padding: 0.5rem;
+	}
+
 header {
 	font-size: 3rem;
 	font-weight: bold;
