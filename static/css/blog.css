@@ -71,6 +71,7 @@ header {
 
 	.post-header {
 		margin-bottom: 0.5rem;
+		border-bottom: 1px solid #E9E9E9;
 	}
 		.post-date-author-bar {
 			color: gray;
