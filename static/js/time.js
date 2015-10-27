@@ -19,7 +19,7 @@ var Time = function(params) {
 	});
 
 	this.saveText = params.saveText;
-	this.failTextl = params.failText;
+	this.failText = params.failText;
 	if(params.icon) {
 		this.icon = '<i class="fa fa-' + params.icon + '"></i>&nbsp;';
 	} else {
