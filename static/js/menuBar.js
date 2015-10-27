@@ -24,6 +24,9 @@ var MenuBar = function(el, menuItems) {
 
 	this.changeMenuItems = function(menuHeader) {
 		var listGroup;
+		var selectedItem = menuHeader.split('/')[1];
+		menuHeader = menuHeader.split('/')[0];
+
 		if(menuHeader === 'index') {
 			if(self.el.querySelector('.specific-list')) {
 				var indexList = self.rebuildIndexList();
@@ -102,7 +105,12 @@ var MenuBar = function(el, menuItems) {
 				lgItem.appendChild(document.createTextNode(items[i]));
 			} else {
 				lgItem.appendChild(document.createTextNode(items[i].title));
-				lgItem.setAttribute('data-_id', items[i]._id)
+				if(items[i]._id) {
+					lgItem.setAttribute('data-_id', items[i]._id)
+				}
+				if(items[i].link) {
+					lgItem.setAttribute('data-link', items[i].link)
+				}
 			}
 
 			listGroup.appendChild(lgItem);
@@ -170,6 +178,12 @@ var MenuBar = function(el, menuItems) {
 			App.change('index')
 		}
 	});
+
+	self.el.addEventListener('click', function(ev) {
+		if(ev.target.getAttribute('data-link')) {
+			location.hash = ev.target.getAttribute('data-link');
+		}
+	})
 
 	self.el.innerHTML = '';
 	self.el.appendChild(self.rebuildIndexList());
