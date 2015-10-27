@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var markdown = require( "markdown" ).markdown;
 
 var postSchema = mongoose.Schema({
 	title: {type: String, required: true, trim: true},
@@ -18,6 +19,10 @@ postSchema.virtual('dateString').get(function() {
 	var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Oct', 'Dec'];
 
 	return this.date.getDate() + ' ' + months[this.date.getMonth()] + ' ' + this.date.getFullYear();
+});
+
+postSchema.virtual('bodyMarkdown').get(function() {
+	return markdown.toHTML(this.body);
 });
 
 postSchema.statics.findByIdErr = function(res, id, cb) {
