@@ -56,7 +56,9 @@ var Router = function(templateContainer, menuBar) {
 
 	window.addEventListener('hashchange', function() {
 		function selectLink() {
-			var selectedLinkEl = document.querySelector('div[data-link="' + location.hash.slice('1') + '"]');
+			var hash =  location.hash.slice(1);
+			if(hash.slice(-1) === '/') hash = hash.slice(0, -1);
+			var selectedLinkEl = document.querySelector('div[data-link="' + hash + '"]');
 			if(selectedLinkEl) {
 				selectedLinkEl.click();
 			}
@@ -78,7 +80,9 @@ var Router = function(templateContainer, menuBar) {
 		self.templateContainer.innerHTML = self.getTemplateNameHTML();
 
 		setTimeout(function() {
-			var selectedLinkEl = document.querySelector('div[data-link="' + location.hash.slice('1') + '"]');
+			var hash =  location.hash.slice(1);
+			if(hash.slice(-1) === '/') hash = hash.slice(0, -1);
+			var selectedLinkEl = document.querySelector('div[data-link="' + hash + '"]');
 			if(selectedLinkEl) {
 				selectedLinkEl.click();
 			}
