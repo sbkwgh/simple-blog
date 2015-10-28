@@ -95,7 +95,7 @@ App.addRoute('posts/:_id', function(params) {
 					blogPost.data.published = post.published;
 					blogTagBar.tags = post.tags;
 				} else {
-					console.log(err)
+					location.hash = 'posts'
 				}
 			});
 		}
@@ -168,12 +168,13 @@ Tooltip.onClick(
 					blogTagBar.tags = [];
 					document.querySelector('#main').classList.add('overlay');
 					document.querySelector('#message-box').classList.remove('hidden');
-					App.initFunctions.posts();
+					location.hash = 'posts'
 
 					blogPost = new Post({
 						title: 'Click to edit this title',
 						body: 'Start writing here',
-						tags: []
+						tags: [],
+						published: false
 					});
 				}
 				e.removeTooltip();
@@ -207,24 +208,30 @@ on('#logout', 'click', function() {
 		document.querySelector('#main').classList.remove('overlay');
 		document.querySelector('#message-box').classList.add('hidden');
 
-		document.querySelector('#publish-post-button').classList.remove('hidden');
-		document.querySelector('#unpublish-post-button').classList.add('hidden');
+		if(document.querySelector('#publish-post-button')) {
+			document.querySelector('#publish-post-button').classList.remove('hidden');
+			document.querySelector('#unpublish-post-button').classList.add('hidden');
+		}
 
 		blogPost = new Post({
 			title: 'Click to edit this title',
 			body: 'Start writing here',
-			tags: []
+			tags: [],
+			published: false
 		})
 
 		blogPost.save(function(err, savedPost) {
 			if(err) {
 				console.log(err);
 			} else {
-				document.querySelector('#post-title').value = savedPost.title;
-				MarkdownEditor.textarea = savedPost.body;
-				blogTagBar.tags = [];
-				blogMenuBar.menuItems['pencil:Posts'].push(savedPost);
+				location.hash = 'posts/' + savedPost._id;
+				blogMenuBar.menuItems['pencil:Posts'] = blogMenuBar.menuItems['pencil:Posts'].push({title: savedPost.title, _id: savedPost._id});
 				blogMenuBar.menuItems = blogMenuBar.menuItems;
+				setTimeout(function() {
+					document.querySelector('#post-title').value = savedPost.title;
+					MarkdownEditor.textarea = savedPost.body;
+					blogTagBar.tags = [];
+				}, 1000)
 			}
 		})
 	});

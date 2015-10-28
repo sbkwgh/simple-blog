@@ -1,6 +1,7 @@
 var post = require('./routes/api/post.js');
 var user = require('./routes/api/user.js');
 var config = require('./routes/api/config.js');
+var comment = require('./routes/api/comment.js');
 
 var blog = require('./routes/blog.js');
 var index = require('./routes/index.js');
@@ -14,4 +15,5 @@ module.exports = function(app) {
 	app.use('/api/post', post);
 	app.use('/api/user', user);
 	app.use('/api/config', config);
+	app.use('/api/comment', comment);
 };

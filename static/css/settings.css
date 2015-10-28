@@ -12,6 +12,9 @@
 	border-radius: 0.15rem;
 	padding: 0.25rem;
 }
+	#setting input:hover, #settings textarea:hover {
+			border-color: #A8A3A3;
+	}
 	#settings input:focus, #settings textarea:focus {
 		border-color: rgb(94, 152, 240);
 	}

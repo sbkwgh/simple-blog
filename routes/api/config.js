@@ -73,7 +73,8 @@ router.get('/js.js', function(req, res) {
 				config.appearance.font.default,
 				config.appearance.font.postBody,
 				config.appearance.font.postTitle,
-				config.appearance.font.blogTitle
+				config.appearance.font.blogTitle,
+				'Roboto'
 			];
 			var js =
 				'WebFont.load({' +

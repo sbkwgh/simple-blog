@@ -64,11 +64,10 @@ header {
 		color: #4D4D4D;
 	}
 
-.post {
+.post, #comments-holder {
 	width: 45rem;
 	margin: 1rem auto 3rem auto;
 }
-
 	.post-header {
 		margin-bottom: 0.5rem;
 		border-bottom: 1px solid #E9E9E9;

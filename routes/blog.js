@@ -9,7 +9,7 @@ function renderBlogCb(err, posts, req, res) {
 	} else {
 		Config.getOrCreateConfig(function(err, config) {
 			if(err) {
-				res.render('blog.html', {posts: []})
+				res.render('blog.html', {config: config, posts: []})
 			} else {
 				res.render('blog.html', {config:config, posts: posts, tag: req.params.tag});
 			}
@@ -24,8 +24,19 @@ router.get('/posts', function(req, res) {
 })
 
 router.get('/posts/:_id', function(req, res) {
-	Post.find({published: true, _id: req.params._id}, function(err, posts) {
-		renderBlogCb(err, posts, req, res)
+	Post.findOne({published: true, _id: req.params._id}, function(err, post) {
+		if(err) {
+			console.log(err);
+			res.render('blogPost.html')
+		} else {
+			Config.getOrCreateConfig(function(err, config) {
+				if(err) {
+					res.render('blogPost.html', {config: config})
+				} else {
+					res.render('blogPost.html', {config:config, post: post});
+				}
+			})
+		}
 	});
 })
 

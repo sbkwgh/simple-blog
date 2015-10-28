@@ -179,5 +179,11 @@ Tooltip.onClick(
 
 on('#post-title','keyup', function(ev) {
 	blogPost.data.title = ev.target.value.trim();
+	for(var i = 0; i < blogMenuBar.menuItems['pencil:Posts'].length; i++) {
+		if(blogMenuBar.menuItems['pencil:Posts'][i]._id = blogPost.data._id) {
+			blogMenuBar.menuItems['pencil:Posts'][i].title = ev.target.value;
+		}
+	}
+	blogMenuBar.menuItems['pencil:Posts'] = blogMenuBar.menuItems['pencil:Posts'];
 	document.querySelector('div[data-_id="' + blogPost.data._id + '"]').innerHTML = ev.target.value;
 })

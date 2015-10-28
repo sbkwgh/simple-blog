@@ -1,0 +1,137 @@
+@keyframes highlight-comment {
+	from {
+		background-color: #fff;
+	}
+	5% {
+		background-color: #DBDBDB;
+	}
+	to {
+		background-color: #fff;
+	}
+}
+.highlight-comment {
+	animation: highlight-comment 15s;
+}
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.button {
+	font-family: 'Roboto', sans-serif;
+}
+
+
+#comments-holder h1 {
+	font-weight: 100;
+	font-size: 1.5rem;
+	padding: 0.5rem 0px 0px;
+	border-top: 1px solid rgb(144, 144, 144);
+	margin-bottom: 0px;
+}
+
+
+.comment {
+	position: relative;
+	width: 100%;
+	font-size: 0.9rem;
+	padding: 0.5rem;
+}
+
+	.comment-name-time {
+		color: #303041;
+		font-size: 0.75rem;
+	}
+		.comment-time {
+			color: gray;
+		}
+		.comment-reply-link, .comment-name {
+			cursor: pointer;
+			font-weight: bold;
+		}
+			.comment-reply-link:hover {
+				text-decoration: underline;
+			}
+		.comment-reply-button {
+			font-size: 0.75rem;
+			position: absolute;
+			text-decoration: underline;
+			cursor: pointer;
+			right: 0.5rem;
+			top: 0.5rem;
+		}
+
+#add-comment-form {
+	margin: 1rem 0;
+}
+	#body-container {
+		position: relative;
+	}
+		#body-container #reply-comment-bar {
+			display: none;
+			position: absolute;
+			width: calc(20.5rem);
+			top: 4px;
+			font-size: 0.8rem;
+			border-bottom: 2px solid #CCC;
+			height: 1.4rem;
+			padding-top: 0.1rem;
+			box-sizing: border-box;
+			background-color: #fff;
+			border-radius: 0.2px;
+			left: 2px;
+			padding-left: 0.2rem;
+			float: left;
+		}
+			#reply-comment-bar-text {
+				cursor: default;
+				width: calc(100% - 3rem);
+				display: block;
+				float: left;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			#reply-comment-bar-cancel {
+				float: right;
+				padding-right: 0.2rem;
+				cursor: pointer;
+				text-decoration: underline;
+			}
+		.show-reply-comment-bar textarea {
+			padding-top: 1.7rem !important;
+		}
+		.show-reply-comment-bar #reply-comment-bar {
+			display: block !important;
+		}
+	#add-comment-form textarea, #add-comment-form input {
+		border-radius: 0rem;
+		border: 2px solid #CFCFCF;
+		border-radius: 0.15rem;
+		padding: 0.25rem;
+		resize: none;
+		margin: 0.15rem 0;
+	}
+		#add-comment-form textarea:hover, #add-comment-form input:hover {
+			border-color: #A8A3A3;
+		}
+		#add-comment-form textarea:focus, #add-comment-form input:focus {
+			border-color: rgb(94, 152, 240);
+		}
+		#add-comment-form textarea {
+			width: 20rem;
+		}
+	#add-comment-form .button {
+		margin-top: 0.15rem;
+	}
