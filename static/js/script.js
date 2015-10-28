@@ -186,7 +186,7 @@ Tooltip.onClick(
 
 Tooltip.onClick(
 	'#account',
-	'<a href="/admin/login" id="logout">Logout</a>'
+	'<a href="" id="logout">Logout</a>'
 );
 on('#logout', 'click', function() {
 	document.cookie = 'loggedInUser =; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
