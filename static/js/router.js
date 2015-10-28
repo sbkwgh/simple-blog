@@ -7,8 +7,12 @@ var Router = function(templateContainer, menuBar) {
 
 
 	this.getTemplateNameHTML = function() {
-		var templateName = (location.hash.slice(1) ? location.hash.slice(1) : 'index');
-		var templateEl = document.querySelector('script[data-template="' + templateName + '"]');
+		var routeName = (location.hash.slice(1) ? location.hash.slice(1) : 'index');
+
+		if(routeName.slice(-1) === '/') routeName = routeName.slice(0,-1);
+
+		var routeHandler = 	this.runRouteHandlerFromRoute(routeName);
+		var templateEl = document.querySelector('script[data-template="' + self.templateName + '"]');
 		var templateHTML;
 
 		//If there is no template for the path
@@ -18,11 +22,9 @@ var Router = function(templateContainer, menuBar) {
 			self.currentTemplateName = 'templateNotFound';
 			self.currentTemplate = templateEl.innerHTML;
 		} else {
-			self.currentTemplateName = templateName;
+			self.currentTemplateName = self.templateName;
 			self.currentTemplate = templateEl.innerHTML;
 		}
-
-		this.runRouteHandlerFromRoute(templateName);
 
 
 		if(
@@ -31,6 +33,8 @@ var Router = function(templateContainer, menuBar) {
 		) {
 			self.menuBar.changeMenuItems(self.currentTemplateName);
 		}
+
+		if(routeHandler) routeHandler();
 
 		self.previousRouteFirstSegment = self.currentRouteFirstSegment;
 
@@ -112,9 +116,12 @@ var Router = function(templateContainer, menuBar) {
 
 	this.runRouteHandlerFromRoute = function(route) {
 		var routeSegments = route.split('/');
+		var templateName = ''
 		var subRoutes = this.routes;
 		var routeSegment;
 		var returnSegments = {};
+
+		self.templateName = '';
 
 		for(var i = 0; i < routeSegments.length; i++) {
 			
@@ -122,16 +129,21 @@ var Router = function(templateContainer, menuBar) {
 				if(routeSegment[0] === ':') {
 					returnSegments[routeSegment.slice(1)] = routeSegments[i];
 					subRoutes = subRoutes[routeSegment]
+					templateName += routeSegment + '/'
 					break;
 				} else if(routeSegment === routeSegments[i]) {
 					subRoutes = subRoutes[routeSegment]
+					templateName += routeSegment + 	'/'
 					break;
 				}
 			}
 			
 			if(i === routeSegments.length-1 && typeof subRoutes === 'function') {
-				subRoutes(returnSegments);
-				return true;
+				self.templateName = templateName.slice(0, -1)
+				console.log(self.templateName)
+				return function() {
+					subRoutes(returnSegments);
+				};
 			}
 		}
 	}

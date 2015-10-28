@@ -25,6 +25,7 @@ var MenuBar = function(el, menuItems) {
 	this.changeMenuItems = function(menuHeader) {
 		var listGroup;
 		var selectedItem = menuHeader.split('/')[1];
+		var slideOutEl = self.el.querySelector('.index-list') || self.el.querySelector('.specific-list');
 		menuHeader = menuHeader.split('/')[0];
 
 		if(menuHeader === 'index') {
@@ -50,12 +51,12 @@ var MenuBar = function(el, menuItems) {
 		listGroup = this.buildSpecificList(menuHeader);
 		listGroup.classList.add('slidein');
 
-		self.el.querySelector('.index-list').classList.add('slideout')
+		slideOutEl.classList.add('slideout')
 		
 		self.el.appendChild(listGroup);
 
 		setTimeout(function() {
-			self.el.removeChild(self.el.querySelector('.index-list'))
+			self.el.removeChild(slideOutEl)
 			listGroup.classList.remove('slidein');
 			listGroup.classList.remove('slideoutlist');
 			self.el.appendChild(listGroup);
@@ -63,6 +64,8 @@ var MenuBar = function(el, menuItems) {
 	}
 
 	this.buildSpecificList = function(menuHeader) {
+		menuHeader = menuHeader.split('/')[0];
+
 		var menuHeaderDisplayName = menuHeader.toLowerCase();
 		var items = this.menuItems[menuHeader];
 

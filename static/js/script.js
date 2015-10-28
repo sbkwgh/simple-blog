@@ -47,12 +47,59 @@ App.addRoute('posts', function() {
 	Post.get(function(err, posts) {
 		if(err) return;
 
+		posts.map(function(post) {
+			post.link = 'posts/' + post._id;
+			return post;
+		})
+
 		blogMenuBar.menuItems['pencil:Posts'] = posts;
 		blogMenuBar.menuItems = blogMenuBar.menuItems;
 	});
 });
 App.addRoute('posts/:_id', function(params) {
-	console.log(params._id)
+	document.querySelector('#main').classList.remove('overlay');
+	document.querySelector('#message-box').classList.add('hidden');
+
+	if(!blogMenuBar.menuItems['pencil:Posts'].length) {
+		Post.get(function(err, posts) {
+			if(err) return;
+
+			posts.map(function(post) {
+				post.link = 'posts/' + post._id;
+				return post;
+			})
+
+			blogMenuBar.menuItems['pencil:Posts'] = posts;
+			blogMenuBar.menuItems = blogMenuBar.menuItems;
+		});
+	}
+
+	setTimeout(function() {
+		if(params._id) {
+			Post.get(params._id, function(err, post) {
+				if(!err) {
+					var unpublish = document.querySelector('#unpublish-post-button');
+					var publish = document.querySelector('#publish-post-button');
+					if(publish && unpublish) {
+						if(post.published) {
+							publish.classList.add('hidden');
+							unpublish.classList.remove('hidden')
+						} else {
+							publish.classList.remove('hidden');
+							unpublish.classList.add('hidden')		
+						}
+					}
+					document.querySelector('#post-title').value = post.title;
+					MarkdownEditor.textarea = post.body;
+					blogPost.data._id = post._id;
+					blogPost.data.published = post.published;
+					blogTagBar.tags = post.tags;
+				} else {
+					console.log(err)
+				}
+			});
+		}
+	}, 1000);
 });
 App.addRoute('index', function() {
 	document.querySelector('#main').classList.remove('overlay');
@@ -106,7 +153,7 @@ blogMenuBar.el.addEventListener('click', function(ev) {
 
 	ev.target.classList.add('lg-item-selected')
 
-	if(_id) {
+	/*if(_id) {
 		Post.get(_id, function(err, post) {
 			if(!err) {
 				var unpublish = document.querySelector('#unpublish-post-button');
@@ -127,7 +174,7 @@ blogMenuBar.el.addEventListener('click', function(ev) {
 				blogTagBar.tags = post.tags;
 			}
 		});
-	}
+	}*/
 })
 
 Tooltip.onClick(
