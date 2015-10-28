@@ -152,29 +152,6 @@ blogMenuBar.el.addEventListener('click', function(ev) {
 	}
 
 	ev.target.classList.add('lg-item-selected')
-
-	/*if(_id) {
-		Post.get(_id, function(err, post) {
-			if(!err) {
-				var unpublish = document.querySelector('#unpublish-post-button');
-				var publish = document.querySelector('#publish-post-button');
-				if(publish && unpublish) {
-					if(post.published) {
-						publish.classList.add('hidden');
-						unpublish.classList.remove('hidden')
-					} else {
-						publish.classList.remove('hidden');
-						unpublish.classList.add('hidden')		
-					}
-				}
-				document.querySelector('#post-title').value = post.title;
-				MarkdownEditor.textarea = post.body;
-				blogPost.data._id = post._id;
-				blogPost.data.published = post.published;
-				blogTagBar.tags = post.tags;
-			}
-		});
-	}*/
 })
 
 Tooltip.onClick(
@@ -209,7 +186,7 @@ Tooltip.onClick(
 
 Tooltip.onClick(
 	'#account',
-	'<a href="#" id="logout">Logout</a>'
+	'<a href="/admin/login" id="logout">Logout</a>'
 );
 on('#logout', 'click', function() {
 	document.cookie = 'loggedInUser =; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
