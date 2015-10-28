@@ -1,4 +1,5 @@
 var Time = function(params) {
+	var self = this;
 	function correctPlural(num, word) {
 		if(num === 1) {
 			return word;
@@ -82,5 +83,7 @@ var Time = function(params) {
 		}
 	}
 
-	setInterval(this.updateTime, 3000);
+	setInterval(function() {
+		self.updateTime();
+	}, 3000);
 };

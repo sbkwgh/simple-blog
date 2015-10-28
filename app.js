@@ -22,7 +22,7 @@ app.set('views', './templates');
 
 routes(app);
 
-mongoose.connect('mongodb://localhost/bserver');
+mongoose.connect(process.env.MONGO || 'mongodb://localhost/simple-blog');
 db = mongoose.connection;
 
 db.on('err', function() {
@@ -31,7 +31,7 @@ db.on('err', function() {
 
 db.once('open', function() {
 	console.log('Connected to mongodb');
-	app.listen(5000, function() {
+	app.listen(process.env.PORT || 5000, function() {
 		console.log('Listening on port 5000')
 	});
 });
