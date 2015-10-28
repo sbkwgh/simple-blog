@@ -1,7 +1,11 @@
 var router = require('express').Router();
 
-router.get('/login', function(req, res) {
-	res.render('login.html');
+router.get('/login', function(req, res, next) {
+	if(!req.signedCookies.loggedInUser) {
+		res.render('login.html');
+	} else {
+		res.redirect('/admin');
+	}
 })
 
 router.all('*', function(req, res, next) {
