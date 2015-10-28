@@ -23,13 +23,14 @@
 }
 
 #settings {
+	overflow-y: scroll;
 	padding: 2rem;
 	padding-top: 3rem;
 	overflow: none;
-	height: 100%;
+	height: calc(100% - 5rem);
 }
 
-#settings:last-child {
+#settings table:last-child {
 	margin-bottom: 1rem;
 }
 
