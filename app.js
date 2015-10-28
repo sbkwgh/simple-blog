@@ -22,7 +22,7 @@ app.set('views', './templates');
 
 routes(app);
 
-mongoose.connect(process.env.MONGO || 'mongodb://localhost/simple-blog');
+mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/simple-blog');
 db = mongoose.connection;
 
 db.on('err', function() {
