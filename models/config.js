@@ -48,7 +48,7 @@ configSchema.statics.getOrCreateConfig = function(cb) {
 						active: '#8EB7CB',
 						hover: '#7EA7DB'
 					},
-					blogTitle: '#6C7172',
+					blogTitle: '#595959',
 					topBar: '#78AEF3',
 					postTitle: '#000000',
 					postBody: '#000000'
