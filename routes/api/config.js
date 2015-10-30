@@ -1,14 +1,6 @@
 var router = require('express').Router();
 var Config = require('../../models/config.js');
 
-router.all('*', function(req, res, next) {
-	if(!req.signedCookies.loggedInUser) {
-		res.json({error: 'Request not authorised'})
-	} else {
-		next();
-	}
-})
-
 router.get('/', function(req, res) {
 	Config.getOrCreateConfig(function(err, config) {
 		if(err) {
@@ -52,7 +44,7 @@ router.get('/css.css', function(req, res) {
 				"#color-bar {" +
 				"	background-color: " + config.appearance.colour.topBar + ";" +
 				"}" + 
-				"header a {" +
+				"header a, header a:vistied, header a:active, header a:hover {" +
 				"	font-family: '" + config.appearance.font.blogTitle + "', 'sans-serif';" +
 				"	color: " + config.appearance.colour.blogTitle + ";" +
 				"}";
@@ -92,15 +84,19 @@ router.get('/js.js', function(req, res) {
 router.put('/', function(req, res) {
 	var configObject = JSON.parse(req.body.json)
 
-	Config.findOneAndUpdate({}, configObject, {upsert: true}, function(err, updatedConfig) {
-		if(err) {
-			console.log(err)
-			res.json({error: 'unknown error'});
-			return;
-		}
+	if(!req.signedCookies.loggedInUser) {
+		res.json({error: 'Request not authorised'})
+	} else {
+		Config.findOneAndUpdate({}, configObject, {upsert: true}, function(err, updatedConfig) {
+			if(err) {
+				console.log(err)
+				res.json({error: 'unknown error'});
+				return;
+			}
 
-		res.json(updatedConfig);
-	});
+			res.json(updatedConfig);
+		});
+	}
 });
 
 module.exports = router;
