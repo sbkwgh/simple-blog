@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{{config.general.blog.title}}</title>
+	<title>{{config.general.blog.title}}{% if post %} | {{post.title}}{% endif %}</title>
 	<link rel="stylesheet" type="text/css" href="/static/css/blog.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/comments.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/cssElements.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/static/css/functionalClasses.css">
 	<link rel="stylesheet" type="text/css" href="/api/config/css.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -43,13 +44,14 @@
 				Loading comments...
 			</div>
 			<form id='add-comment-form'>
-				<input name='name' placeholder='Your name'><br/>
+				<input name='name' {% if author %} data-author='{{author}}' class='hidden'{% endif %} placeholder='Your name'><br/>
 				<div id='body-container'>
 					<div id='reply-comment-bar' class='noselect'>
 						<span id='reply-comment-bar-text'>Replying to @John "A comment..."</span>
 						<span id='reply-comment-bar-cancel'>Cancel</span>
 					</div>
-					<textarea name='body' placeholder='Your comment - no HTML tags allowed'></textarea>
+					<a href='http://stackoverflow.com/editing-help' title='Markdown help' target='_blank' id='markdown-question'><i class='fa fa-question-circle'></i></a>
+					<textarea name='body' placeholder='{% if author %}Add a comment to your blog - format using Markdown{% endif %}{% if !author %}Your comment - format using Markdown{% endif %}'></textarea>
 				</div>
 				<div id='submit-comment' class='button btn-green'><i class='fa fa-comment'></i> Add comment</div>
 			</form>
