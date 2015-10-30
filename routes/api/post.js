@@ -1,5 +1,7 @@
 var express = require('express');
 var Post = require('../../models/post.js');
+var ObjectId = require('mongoose').Schema.ObjectId;
+var Comment = require('../../models/comment.js');
 
 var router = express.Router();
 
@@ -85,9 +87,17 @@ router.delete('/:id', function(req, res) {
 		post.remove(function(err) {
 			if(err) {
 				console.log(err)
-				res.json({errors: 'unknown error'})
+				res.json({error: 'unknown error'})
+			} else {
+				Comment.find({postId: ObjectId(req.params.id)}).remove(function(err, success) {
+					if(err) {
+						console.log(err)
+						res.json({error: 'unknown error'})
+					} else {
+						res.json({success: true});
+					}
+				})
 			}
-			res.json({success: true});
 		})
 	});
 });
