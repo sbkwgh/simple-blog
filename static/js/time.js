@@ -77,7 +77,7 @@ var Time = function(params) {
 				this.icon +
 				this.saveText + 
 				timeObj.hours + 
-				'' +
+				' ' +
 				correctPlural(timeObj.hours, 'hour') + 
 				' ago';
 		}
