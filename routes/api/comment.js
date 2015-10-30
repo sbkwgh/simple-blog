@@ -36,6 +36,10 @@ router.post('/', function(req, res) {
 		postId: ObjectId(req.body.postId)
 	}
 
+	if(req.signedCookies.author) {
+		commentObj.authorComment = true;
+	}
+
 	if(req.body.parentCommentId) {
 		if(!req.body.postId.match(/^[0-9a-fA-F]{24}$/)) {
 			res.json({error: 'invalid parentCommentId'});
