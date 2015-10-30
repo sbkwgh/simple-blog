@@ -34,6 +34,13 @@ button:focus {
 
 
 #comments-holder h1 {
+	font-weight: normal !important;
+	font-size: 1.5rem !important;
+	border: 0 !important;
+	padding: 0 !important;
+	margin: 0; 
+}
+#comments-holder h1 {
 	font-weight: 100;
 	font-size: 1.5rem;
 	padding: 0.5rem 0px 0px;
@@ -43,16 +50,29 @@ button:focus {
 
 
 .comment {
+	box-sizing: border-box;
 	position: relative;
 	width: 100%;
 	font-size: 0.9rem;
 	padding: 0.5rem;
+	border-bottom: 1px solid #EDEDED;
 }
 
 	.comment-name-time {
 		color: #303041;
 		font-size: 0.75rem;
 	}
+		.comment-author {
+			border: 1px solid #A5A5A5;
+			border-radius: 0.2rem;
+			padding: 0 0.2rem;
+			background-color: #F9F9F9;
+		}
+		.comment-author::before {
+			content: '\f040';
+			font-family: 'Fontawesome';
+			padding-right: 0.2rem;
+		}
 		.comment-time {
 			color: gray;
 		}
@@ -82,7 +102,7 @@ button:focus {
 			display: none;
 			position: absolute;
 			width: calc(20.5rem);
-			top: 4px;
+			top: 5px;
 			font-size: 0.8rem;
 			border-bottom: 2px solid #CCC;
 			height: 1.4rem;
@@ -109,6 +129,15 @@ button:focus {
 				cursor: pointer;
 				text-decoration: underline;
 			}
+				#markdown-question {
+					position: absolute;
+					left: 19.6rem;
+					cursor: pointer;
+					bottom: 0.45rem;
+				}
+					#markdown-question::after {
+						content: '';
+					}
 		.show-reply-comment-bar textarea {
 			padding-top: 1.7rem !important;
 		}
@@ -117,10 +146,13 @@ button:focus {
 		}
 	#add-comment-form textarea, #add-comment-form input {
 		border-radius: 0rem;
+		width: 20rem;
 		border: 2px solid #CFCFCF;
 		border-radius: 0.15rem;
 		padding: 0.25rem;
 		resize: none;
+		font-family: sans-serif;
+		font-size: 0.8rem;
 		margin: 0.15rem 0;
 	}
 		#add-comment-form textarea:hover, #add-comment-form input:hover {
@@ -128,9 +160,6 @@ button:focus {
 		}
 		#add-comment-form textarea:focus, #add-comment-form input:focus {
 			border-color: rgb(94, 152, 240);
-		}
-		#add-comment-form textarea {
-			width: 20rem;
 		}
 	#add-comment-form .button {
 		margin-top: 0.15rem;

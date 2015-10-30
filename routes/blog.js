@@ -1,6 +1,7 @@
 var router = require('express').Router();
 var Post = require('../models/post.js');
 var Config = require('../models/config.js');
+var Comment = require('../models/comment.js');
 
 function renderBlogCb(err, posts, req, res) {
 	if(err) {
@@ -11,7 +12,9 @@ function renderBlogCb(err, posts, req, res) {
 			if(err) {
 				res.render('blog.html', {config: config, posts: []})
 			} else {
-				res.render('blog.html', {config:config, posts: posts, tag: req.params.tag});
+				Comment.getNumberOfComments(function(err, commentNumbers) {
+					res.render('blog.html', {config:config, commentNumbers: commentNumbers, posts: posts, tag: req.params.tag});
+				})
 			}
 		})
 	}
@@ -31,9 +34,9 @@ router.get('/posts/:_id', function(req, res) {
 		} else {
 			Config.getOrCreateConfig(function(err, config) {
 				if(err) {
-					res.render('blogPost.html', {config: config})
+					res.render('blogPost.html', {config: config, author: req.signedCookies.author})
 				} else {
-					res.render('blogPost.html', {config:config, post: post});
+					res.render('blogPost.html', {config:config, post: post, author: req.signedCookies.author});
 				}
 			})
 		}

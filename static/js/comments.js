@@ -40,12 +40,15 @@ function addComment(params) {
 		var commentReplyButton = document.createElement('div');
 
 	comment.setAttribute('class', 'comment');
-	comment.setAttribute('name', params._id);
+	comment.setAttribute('id', '_id' + params._id);
 	if(params.parentCommentId) {
-		comment.setAttribute('data-parent-id', params.parentCommentId);
+		comment.setAttribute('data-parent-id', '_id' + params.parentCommentId);
 	}
 		commentNameTime.setAttribute('class', 'comment-name-time');
 			commentName.setAttribute('class', 'comment-name');
+			if(params.authorComment) {
+				commentName.classList.add('comment-author');
+			}
 			i.setAttribute('class', 'fa fa-long-arrow-right');
 			commentReplyLink.setAttribute('class', 'comment-reply-link');
 			commentTime.setAttribute('class', 'comment-time');
@@ -55,7 +58,7 @@ function addComment(params) {
 	commentName.innerHTML = params.name;
 	commentReplyLink.innerHTML = params.parentCommentName;
 	commentBody.innerHTML = params.body;
-	commentTime.innerHTML = params.date;
+	commentTime.innerHTML =  new Date(params.date).toLocaleString().slice(0, 10);
 	commentReplyButton.innerHTML = 'Reply'
 
 	commentNameTime.appendChild(commentName);
@@ -91,7 +94,8 @@ commentsEl.addEventListener('click', function(ev) {
 	if(ev.target.classList.contains('comment-reply-link')) {
 		commentEl = ev.target.parentElement.parentElement;
 		parentId = commentEl.getAttribute('data-parent-id');
-		document.querySelector('.comment[name="' + parentId + '"]').classList.add('highlight-comment');
+		document.querySelector('#' + parentId).classList.remove('highlight-comment');
+		document.querySelector('#' + parentId).classList.add('highlight-comment');
 		location.hash = parentId;
 	} else if(ev.target.classList.contains('comment-reply-button')) {
 		commentEl = ev.target.parentElement;
@@ -142,12 +146,16 @@ document.querySelector('#submit-comment').addEventListener('click', function() {
 	if(form.getAttribute('data-parent-id')) {
 		newComment.parentCommentId = form.getAttribute('data-parent-id');
 	}
+	if(document.cookie && document.cookie.contains('author')) {
+		newComment.name = document.querySelector('input').getAttribute('data-author');
+		newComment.authorComment = true;
+	}
 
 	if(!newComment.name || !newComment.body) return;
 
 	new Comment(newComment).save(function(err, post) {
 		if(!err) {
-			if(document.querySelector('#comments').innerHTML = 'There are no comments for this post. Add one below'){
+			if(document.querySelector('#comments').innerHTML === 'There are no comments for this post. Add one below'){
 				document.querySelector('#comments').innerHTML = '';
 			}
 			document.querySelector('#comments').appendChild(addComment(post));
